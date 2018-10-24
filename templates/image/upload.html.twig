@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Upload d'image{% endblock %}
+
+{% block body %}
+    <h1>Uploader une image</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.file) }}
+    {{ form_row(form.save, { 'attr': {'class': 'mt-3 btn-primary'}}) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}

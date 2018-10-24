@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Image uploadée</h2>
+    <img src="/resized.png?v={{ random() }}" />
+{% endblock %}
+
+{% block title %}Image{% endblock %}
+

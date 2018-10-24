@@ -1,0 +1,16 @@
+settings:
+  index:
+    # single node, no sharding
+    number_of_shards: 1
+    number_of_replicas: 0
+mappings:
+  links:
+    dynamic: false # disable dynamic mapping
+    properties:
+      title: &fr_text
+        type: text
+        analyzer: french
+      summary: *fr_text
+      date:
+        type: date
+

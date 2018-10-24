@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Liste des démos{% endblock %}
+
+{% block body %}
+    <h1>Webhooks</h1>
+
+    <h2>Liste des webhooks</h2>
+    <ul>
+        {% for webhook in webhooks %}
+            <li>{{ webhook.url }} ({{ webhook.token }})</li>
+        {% else %}
+            <li>Aucun webhook</li>
+        {% endfor %}
+    </ul>
+    {{ form_start(deleteForm) }}
+    {{ form_row(deleteForm.delete, { 'attr': {'class': 'mt-3 btn-outline-danger'}}) }}
+    {{ form_rest(deleteForm) }}
+    {{ form_end(deleteForm) }}
+
+    <h2>Nouveau webhook</h2>
+    {{ form_start(form) }}
+
+    <div class="input-group mb-2">
+        <div class="input-group-prepend">
+            {{ form_label(form.token, null, {'label_attr': { 'class': 'input-group-text' } }) }}
+        </div>
+        {{ form_widget(form.token) }}
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            {{ form_label(form.url, null, {'label_attr': { 'class': 'input-group-text' } }) }}
+        </div>
+        {{ form_widget(form.url) }}
+    </div>
+    {{ form_row(form.save, { 'attr': {'class': 'mt-3 btn-primary'}}) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}

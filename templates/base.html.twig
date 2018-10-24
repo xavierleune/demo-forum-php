@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>{% block title %}Forum PHP 2018{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+
+        <meta name="twitter:description" content="Démonstrations pour le Forum PHP 2018" />
+        <meta name="twitter:image" content="/forumphp-2018-vecto-1000×480.png" />
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="/">Forum PHP 2018</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('link_index') }}">Links</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('link_webhook') }}">Webhooks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-warning" href="{{ path('link_add') }}">Nouvel article</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('image_upload') }}">Upload d'image</a>
+                </li>
+            </ul>
+            {#<form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>#}
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">{{ message }}</div>
+            {% endfor %}
+        {% endfor %}
+        {% block body %}{% endblock %}
+    </main>
+
+        {% block javascripts %}{% endblock %}
+        <script src="{{ asset('build/app.js') }}"></script>
+    </body>
+</html>

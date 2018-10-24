@@ -1,0 +1,14 @@
+HELO localhost
+MAIL FROM:<xavier+forumphp@ccmbenchmark.com>
+RCPT TO:<xavier.leune@gmail.com>
+DATA
+From: [Hacker] <xavier@ccmbenchmark.com>
+To: <xavier.leune@gmail.com>
+Date: Tue, 15 Sep 2017 17:20:26 -0400
+Subject: Ah Ah AH
+
+Démo FORUM PHP
+
+
+.
+QUIT

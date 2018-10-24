@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Liste des démos{% endblock %}
+
+{% block body %}
+    <h1>Les derniers articles ajoutés</h1>
+    <div style="display: grid; grid-gap: 1rem; grid-auto-flow: dense;   grid-template-columns: repeat(3, auto);">
+    {% for link in links %}
+        <div class="card shadow-sm m-2">
+            <a href="{{ link.link }}">
+                <img class="card-img-top" src="{{ link.image }}" alt="{{ link.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ link.title }}</h5>
+                    <p class="card-text">{{ link.description[0:120] }}{% if link.description|length > 120 %}...{% endif %}</p>
+                    <span class="btn btn-primary btn-sm">Lire sur {{ link.host }}</span>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
